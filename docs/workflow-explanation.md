@@ -55,14 +55,38 @@ Generates and sends the concise AI news report.
 
 The scenario is configured to run automatically every day at 8:00 AM.
 
+
 ## Complete Workflow
 
-RSS Feeds
-    ↓
-Text Aggregators
-    ↓
-Google Gemini
-    ↓
-Router
-   ↙   ↘
-Gmail  Telegram
+The following diagram illustrates the end-to-end automation process:
+
+```mermaid
+flowchart TD
+    A["RSS Feed 1 - OpenAI"]
+    B["RSS Feed 2 - Google AI"]
+    C["RSS Feed 3 - TechCrunch"]
+
+    A --> D["Text Aggregator 1"]
+    B --> E["Text Aggregator 2"]
+    C --> F["Text Aggregator 3"]
+
+    D --> E
+    E --> F
+
+    F --> G{"Make.com Router"}
+
+    G --> H["Google Gemini - Gmail"]
+    G --> I["Google Gemini - Telegram"]
+
+    H --> J["Gmail Newsletter"]
+    I --> K["Telegram AI Report"]
+```
+
+### Workflow Explanation
+
+- **Input:** Three RSS feeds collect AI news.
+- **Aggregation:** Text Aggregators combine the collected information.
+- **Processing:** Separate Gemini modules generate reports for each channel.
+- **Distribution:** The Router directs the reports to Gmail and Telegram.
+- **Output:** Users receive a detailed email newsletter and a concise Telegram report.
+
